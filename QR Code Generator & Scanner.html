@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QR Code Generator &amp; Scanner</title>
+
+
+    <!-- QR Generator Library -->
+    <script src="./QR Code Generator &amp; Scanner_files/qrcode.min.js.download"></script>
+
+    <!-- QR Scanner Library -->
+    <script src="./QR Code Generator &amp; Scanner_files/html5-qrcode" type="text/javascript"></script>
+
+
+    <!-- CONNECTING CSS FILE -->
+    <link rel="stylesheet" href="./QR Code Generator &amp; Scanner_files/style.css">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>📱 QR Code Generator &amp; Scanner</h1>
+
+
+    <!-- QR GENERATOR -->
+
+    <div class="section">
+
+        <h2>✨ Generate 4 QR Codes</h2>
+
+
+        <div class="input-grid">
+
+            <div class="input-box">
+
+                <label for="text1">QR Code 1</label>
+
+                <input type="text" id="text1" placeholder="Enter text or URL" value="Sanjana">
+
+            </div>
+
+
+            <div class="input-box">
+
+                <label for="text2">QR Code 2</label>
+
+                <input type="text" id="text2" placeholder="Enter text or URL" value="8198292825">
+
+            </div>
+
+
+            <div class="input-box">
+
+                <label for="text3">QR Code 3</label>
+
+                <input type="text" id="text3" placeholder="Enter text or URL" value="Indian Bank">
+
+            </div>
+
+
+            <div class="input-box">
+
+                <label for="text4">QR Code 4</label>
+
+                <input type="text" id="text4" placeholder="Enter text or URL" value="BCA 3rd E">
+
+            </div>
+
+        </div>
+
+
+        <button onclick="generateAllQR()">
+
+            Generate 4 QR Codes
+
+        </button>
+
+    </div>
+
+
+
+    <!-- GENERATED QR CODES -->
+
+    <div class="section">
+
+        <h2>📦 Generated QR Codes</h2>
+
+
+        <div class="qr-container">
+
+
+            <div class="qr-card">
+
+                <h3>QR Code 1</h3>
+
+                <div id="qr1" class="qr-code" title="Sanjana"><canvas width="128" height="128" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+
+                <button class="download-btn" onclick="downloadQR('qr1','QR-Code-1')">
+
+                    Download
+
+                </button>
+
+            </div>
+
+
+
+            <div class="qr-card">
+
+                <h3>QR Code 2</h3>
+
+                <div id="qr2" class="qr-code" title="8198292825"><canvas width="128" height="128" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+
+                <button class="download-btn" onclick="downloadQR('qr2','QR-Code-2')">
+
+                    Download
+
+                </button>
+
+            </div>
+
+
+
+            <div class="qr-card">
+
+                <h3>QR Code 3</h3>
+
+                <div id="qr3" class="qr-code" title="Indian Bank"><canvas width="128" height="128" style="display: none;"></canvas><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAGPElEQVR4AeycjW7bMAyE8/X933mbgAZYxVNDRXZsSVdMyHTh7/FgcG26r8fj8ecu588JXyO9nVDObbh+8lIE8O/v/rMrAxbArpP/7tsC+CZi1xcLYNfJf/ctBfBv+Xmcfb7zv3wBHpA7KthIHxDzqhyj2EiNWd9WjVIALWPj6zFgAaw301RHTyML4MnEpq8WwKaDf7adFgDEhQhy2DPZO6+tJeedWL0+KjfkegZ60/2wB9LLL/y0/RHoxSUtgBdx/PakDFgAkw7uqLItgKOYnDSOBTDp4I4qe1oBZBe0o4j6LY6qpWC/+Vz1Xp13WgHUjfj+HgMWwHu8LeNlASwzyvcasQDe420Zr2kFAD+/+wXIH2FDtIMcpqZclrv6KLtZsGkFMAvBd6/TArj7hE6uzwI4meC7hG/VYQG0mNkETwugXnx67iNcgl7YVH6Itsoui2XrhpgXyLpLu2yNyk4GbIBpATT8DU/OgAUw+QBHy7cARhmc3N8CmHyAo+VLAQBvfx4Ncr6jhY/4Q6xRxYOcnfLtwSDmgWOxVj1SAC1j4/Mx8KpiC+AVQ4u/bwEsPuBX7VkArxha/P0v9Z2kq7AzuIa4TKn+srkhxsv6FjuV+0rMT4AylY2PBbDx8EvrFkBhYeNjASw6/GxbhwsA4pIE72OtBQlizJZtjUP0hYgpEutY5a7sWhjEPBCxln8Gh3y8wwWQKdA292HAArjPLC6pxAK4hPb7JLUA7jOLSyqxAC6h/T5JvyC3MULOTrVWNuXMUb5nYKoWlUfZwfs8lBwqpsIg5oGIlZj1UfFqm+fdT4AnE4u89rZhAfQytpi9BbDYQHvbsQB6GVvMXn4eAOKykV0ssnaQywHRDvK/Cp6dV7ZuFU/5FkzZgu4HfuLFvz7ZeMquhfkJ0GJmE9wC2GTQrTYtgBYzm+AWwCKDfrcNKYB6+Sh3lQB+Li6g78q3xKxP1q74Qcyl/CHaQcSyvlk7iDkA5S7/byNlWPquj7ID0r/ZJQWgghpbkwELYM25pruyANJUrWloAaw513RX6R8HpyMmDSG3qLTC1ctQ6678lS3EepRdNl7xVbYKg5hb2Y1gpR51/AQYYXUBXwtg8iGOlm8BjDI4ub8FMPkAR8uXAoC4lEDE1FKRLUj5Kiwbr9hBrLHg9YFol82t7CDGA/0ja+WvMIgx6z5adxWvZSsF0DI2vh4DFsB6M+3qyALooms9YwtgvZl2dSQ/E9izRHRl+88Y4pIDEfvP5dS/wvG5IcaEiL3T2FE+fgIcxeSkcSyASQd3VNkWwFFMThrHAph0cEeVnRbAyGIIcfFR8RTW0+iI/9G+Kl7Bsv0U2/pkfXvs0gLoCWrbeRiwAOaZ1SmVWgCn0Hpe0KMjWwBHMzpZPPmZQIhLG0RspFeI8SCPqdwQ/etFqnVX8RQGMQfksZGYyncU8xNglMHJ/S2AyQc4Wr4FMMrg5P4WwOQDHC3fAhhlcHL/9OcB1Paseld2I5jK0cJUHsht6ComRF9l18JUPVmsjtm6q3jKFmIvwMNPgMfeXxbA3vP3E2Dz+VsA2wsA9HIAn8d7hgGxPuWvliSFQYyn7FSOHgxinh7/2hZy8VQvBfMOUDO62d0C2GzgdbsWQM3Ize5nl2MBnM3wzeNLAZTl4OwzyouqD3ILkcp9dDyVo2AqT8HPPhC5AfzPwMfmX/IJsDknW7VvAWw17tisBRA52QpJCwD0EgGv8TMYhZj3EwtWTw6INUIOO5ozVXfB0gI4uiDH+52BT71rAXyK6ZvmsQBuOphPlWUBfIrpm+a5vQDKopI9kFuwINqp+ai8EH2VXQtTebIYxNwjvoC/E/jY/Ov2T4DN53N6+xbA6RTfO4EFcLP5fLqcaQUAuYWotYzVOMR4EDE1IIh2oLE6b7mrmAWvT9YOYu461vM+rQAUGcb6GbAA+jlbysMCWGqc/c1YAP2cLeWRFsBzaXjn9QzGsnWo3BCXJGWncii7Fqb8IeZWdq2YNQ4xXm3z2z0tgN+C+L15GbAAbjK7q8qwAK5i/iZ5LYCbDOKqMqQAIC4WcCx2VcOtvCOLWCumwlUeyHGrfFUOhYHOIQWgAhhbkwELYM25pruyANJUrWloAaw513RXFkCaqnMMr476FwAA//+TYjbVAAAABklEQVQDADxNmG8QSE4/AAAAAElFTkSuQmCC" style="display: block;"></div>
+
+                <button class="download-btn" onclick="downloadQR('qr3','QR-Code-3')">
+
+                    Download
+
+                </button>
+
+            </div>
+
+
+
+            <div class="qr-card">
+
+                <h3>QR Code 4</h3>
+
+                <div id="qr4" class="qr-code" title="BCA 3rd E"><canvas width="128" height="128" style="display: none;"></canvas><img src="data:image/png;base64,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" style="display: block;"></div>
+
+                <button class="download-btn" onclick="downloadQR('qr4','QR-Code-4')">
+
+                    Download
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- QR SCANNER -->
+
+    <div class="section">
+
+        <h2>🔍 Scan QR Code</h2>
+
+
+        <!-- CAMERA SCANNER -->
+
+        <div id="reader"></div>
+
+
+        <div class="scanner-buttons">
+
+            <button onclick="startScanner()">
+
+                📷 Start Camera
+
+            </button>
+
+
+            <button id="stopScanner" onclick="stopScanner()">
+
+                ⛔ Stop Camera
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FILE SCANNER -->
+
+        <div class="file-scanner">
+
+            <h3>🖼️ Scan QR from Image/File</h3>
+
+            <p>
+                Select a QR code image from your device
+            </p>
+
+
+            <input type="file" id="qrFile" accept="image/*" onchange="scanFromFile(this.files[0])">
+
+
+            <button class="file-btn" onclick="document.getElementById('qrFile').click()">
+
+                📁 Choose QR Image
+
+            </button>
+
+        </div>
+
+
+
+        <!-- RESULT -->
+
+        <div class="result">
+
+            <strong>Scanned Result:</strong>
+
+            <p id="scanResult">
+
+                No QR code scanned yet.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- CONNECTING JAVASCRIPT FILE -->
+
+<script src="./QR Code Generator &amp; Scanner_files/script.js.download"></script>
+
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
